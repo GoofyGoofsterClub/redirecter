@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .message {
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="message" id="message">
+        Redirecting...
+    </div>
+
+    <script>
+        // Execute immediately, before window.onload to be as fast as possible
+        const hash = window.location.hash;
+        if (hash && hash.length > 1) {
+            // Extract everything after the '#' character
+            const targetUrl = hash.substring(1);
+            
+            // Use replace() so the redirect page doesn't stay in browser history
+            window.location.replace(targetUrl);
+        } else {
+            document.getElementById('message').innerText = 'No redirect URL provided. Please append a URL after the hash (e.g., #https://example.com).';
+        }
+    </script>
+</body>
+</html>
